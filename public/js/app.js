@@ -4,18 +4,27 @@
 // ProductList component using ES6 syntax
 class ProductList extends React.Component{
   render(){
-    const product = Seed.products[0];
+    // sort the data according to the number of votes
+    const products = Seed.products.sort((a,b) => (
+      b.votes - a.votes
+    ));
+
+    // create an array of Product component
+    const productComponents = products.map((product) => (
+      <Product
+        key={'product-'+product.id}
+        id={product.id}
+        title={product.title}
+        description={product.description}
+        url={product.url}
+        votes={product.votes}
+        submitterAvatarUrl={product.submitterAvatarUrl}
+        productImageUrl= {product.productImageUrl}
+        />
+    ));
     return(
       <div className= 'ui unstackable items'>
-        <Product
-          id={product.id}
-          title={product.title}
-          description={product.description}
-          url={product.url}
-          votes={product.votes}
-          submitterAvatarUrl={product.submitterAvatarUrl}
-          productImageUrl= {product.productImageUrl}
-          />
+        {productComponents}
       </div>
     )
   }
