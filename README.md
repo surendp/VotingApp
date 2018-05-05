@@ -4,5 +4,8 @@
 
 ## Outcome
 
-- Create react components and JSX
+- Create react components and JSX Elements
 - Use babel to transpile ES6 code to ES5 browser compatible javascript code
+- Create data driven components
+- ES6 arrow functions, javascript map() and sort() functions
+- Event propagation, event handeling and binding custome component methods

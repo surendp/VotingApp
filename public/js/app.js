@@ -3,6 +3,11 @@
 
 // ProductList component using ES6 syntax
 class ProductList extends React.Component{
+
+  handleProductUpVote(productId){
+      console.log(productId + ' was upvoted');
+  }
+
   render(){
     // sort the data according to the number of votes
     const products = Seed.products.sort((a,b) => (
@@ -20,6 +25,7 @@ class ProductList extends React.Component{
         votes={product.votes}
         submitterAvatarUrl={product.submitterAvatarUrl}
         productImageUrl= {product.productImageUrl}
+        onVote={this.handleProductUpVote}
         />
     ));
     return(
@@ -32,6 +38,17 @@ class ProductList extends React.Component{
 
 // Product component -> A child component for the ProductList Component
 class Product extends React.Component{
+
+  constructor(props){
+    super(props);
+
+    this.handleUpVote = this.handleUpVote.bind(this);
+  }
+
+  handleUpVote(){
+    this.props.onVote(this.props.id);
+  }
+
   render(){
     return(
       <div className='item'>
@@ -40,7 +57,7 @@ class Product extends React.Component{
         </div>
         <div className='middle aligned content'>
           <div className='header'>
-            <a>
+            <a onClick={this.handleUpVote}>
               <i className='large caret up icon' />
             </a>
             {this.props.votes}
