@@ -7,17 +7,35 @@ class ProductList extends React.Component{
   constructor(props){
     super(props);
 
+    // initialize the state with empty array of products
     this.state={
       products: [],
     };
+
+    // bind the custom method
+    this.handleProductUpVote = this.handleProductUpVote.bind(this);
   }
 
+  // lifecycle method
   componentDidMount(){
     this.setState({products: Seed.products});
   }
 
   handleProductUpVote(productId){
-      console.log(productId + ' was upvoted');
+
+      // change the state without mutating
+      const nextProducts = this.state.products.map((product) => {
+        if(product.id === productId){
+          const nextProduct = Object.assign({}, product, {
+            votes:product.votes + 1,
+          });
+          return nextProduct;
+        }
+        return product;
+      });
+
+      // update the state
+      this.setState({products: nextProducts});
   }
 
   render(){
