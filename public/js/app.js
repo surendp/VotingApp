@@ -3,26 +3,17 @@
 
 // ProductList component using ES6 syntax
 class ProductList extends React.Component{
-
-  constructor(props){
-    super(props);
-
     // initialize the state with empty array of products
-    this.state={
+    state = {
       products: [],
     };
-
-    // bind the custom method
-    this.handleProductUpVote = this.handleProductUpVote.bind(this);
-  }
 
   // lifecycle method
   componentDidMount(){
     this.setState({products: Seed.products});
   }
 
-  handleProductUpVote(productId){
-
+  handleProductUpVote = (productId) => {
       // change the state without mutating
       const nextProducts = this.state.products.map((product) => {
         if(product.id === productId){
@@ -69,13 +60,7 @@ class ProductList extends React.Component{
 // Product component -> A child component for the ProductList Component
 class Product extends React.Component{
 
-  constructor(props){
-    super(props);
-
-    this.handleUpVote = this.handleUpVote.bind(this);
-  }
-
-  handleUpVote(){
+  handleUpVote = () => {
     this.props.onVote(this.props.id);
   }
 

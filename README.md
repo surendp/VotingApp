@@ -11,3 +11,4 @@
 - Event propagation, event handeling and binding custom component methods
 - Creating  stateful compoents and lifecycle methods
 - Update the state without mutating the object (immutability principle).
+- Using babel transform-class-properties plugin to refactor the components and avoid the need to use constructor
