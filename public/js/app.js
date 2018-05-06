@@ -1,7 +1,4 @@
 
-//import createReactClass from 'create-react-class';
-
-// ProductList component using ES6 syntax
 class ProductList extends React.Component{
     // initialize the state with empty array of products
     state = {
@@ -60,6 +57,7 @@ class ProductList extends React.Component{
 // Product component -> A child component for the ProductList Component
 class Product extends React.Component{
 
+  // using arrow function auto-binds to Product component in is case
   handleUpVote = () => {
     this.props.onVote(this.props.id);
   }
@@ -103,16 +101,3 @@ ReactDOM.render(
   <ProductList/>,
   document.getElementById('content')
 );
-
-/*
-// ProductList component using JavaScript
-const ProductList1 = createReactClass({
-  render(){
-    return(
-      <div className= 'ui unstackable items'>
-        Hello, friend! I am a basic React component.
-      </div>
-    )
-  }
-})
-*/
